@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block app_content %}
+<h1>Dashboard</h1>
+<table class="table table-hover">
+    <th>ID</th>
+    {% for value in values %}
+    {% include '_wordcount.html' %}
+    {% endfor %}
+</table>
+{% endblock %}

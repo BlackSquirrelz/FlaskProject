@@ -5,7 +5,7 @@ from flask_babel import _,get_locale
 from werkzeug.urls import url_parse
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, EditProfileForm, ResetPasswordRequestForm
-from app.models import User, Searches
+from app.models import User, Laws
 from app.auth.email import send_password_reset_email
 
 
@@ -21,7 +21,7 @@ def before_request():
 @login_required
 def index():
     page = request.args.get('page', 1, type=int)
-    searches = current_user.followed_searches().paginate(
+    searches = current_user.followed_laws().paginate(
         page, app.config['SEARCHES_PER_PAGE'], False)
     next_url = url_for('index', page=searches.next_num) \
         if searches.has_next else None
@@ -35,7 +35,7 @@ def index():
 @login_required
 def explore():
     page = request.args.get('page', 1, type=int)
-    searches = Searches.query.order_by(Searches.timestamp.desc()).paginate(
+    searches = Laws.query.order_by(Laws.timestamp.desc()).paginate(
         page, app.config['POSTS_PER_PAGE'], False)
     next_url = url_for('explore', page=searches.next_num) \
         if searches.has_next else None
@@ -58,7 +58,7 @@ def law_collection():
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
     page = request.args.get('page', 1, type=int)
-    searches = user.searches.order_by(Searches.timestamp.desc()).paginate(
+    searches = user.searches.order_by(Laws.timestamp.desc()).paginate(
         page, app.config['SEARCHES_PER_PAGE'], False)
     next_url = url_for('user', username=user.username, page=searches.next_num) \
         if searches.has_next else None

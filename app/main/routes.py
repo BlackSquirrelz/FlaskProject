@@ -3,15 +3,18 @@ from flask import render_template, flash, redirect, url_for, request, g, current
 from flask_login import current_user, login_required
 from flask_babel import _, get_locale
 from app import db
-from app.main.forms import EditProfileForm, SearchForm
-from app.models import User, Searches
+from app.main.forms import EditProfileForm, Law_Form
+from app.models import User, Laws
 from app.main import bp
+from app.main.forms import SearchForm
+from flask_table import Table, Col, LinkCol
 
 @bp.before_request
 def before_request():
     if current_user.is_authenticated:
         current_user.last_seen = datetime.utcnow()
         db.session.commit()
+        g.search_form = SearchForm()
     g.locale = str(get_locale())
 
 @bp.route('/', methods=['GET', 'POST'])
@@ -19,27 +22,27 @@ def before_request():
 @login_required
 def index():
     page = request.args.get('page', 1, type=int)
-    searches = current_user.followed_searches().paginate(
-        page, current_app.config['SEARCHES_PER_PAGE'], False)
-    next_url = url_for('main.index', page=searches.next_num) \
-        if searches.has_next else None
-    prev_url = url_for('main.index', page=searches.prev_num) \
-        if searches.has_prev else None
+    laws = current_user.followed_laws().paginate(
+        page, current_app.config['LAWS_PER_PAGE'], False)
+    next_url = url_for('main.index', page=laws.next_num) \
+        if laws.has_next else None
+    prev_url = url_for('main.index', page=laws.prev_num) \
+        if laws.has_prev else None
     return render_template('index.html', title='Home',
-                           searches=searches.items, next_url=next_url,
+                           laws=laws.items, next_url=next_url,
                            prev_url=prev_url)
 
 @bp.route('/explore')
 @login_required
 def explore():
     page = request.args.get('page', 1, type=int)
-    searches = Searches.query.order_by(Searches.timestamp.desc()).paginate(
-        page, current_app.config['POSTS_PER_PAGE'], False)
-    next_url = url_for('explore', page=searches.next_num) \
-        if searches.has_next else None
-    prev_url = url_for('explore', page=searches.prev_num) \
-        if searches.has_prev else None
-    return render_template('index.html', title='Explore', posts=searches.items,
+    laws = Laws.query.order_by(Laws.timestamp.desc()).paginate(
+        page, current_app.config['LAWS_PER_PAGE'], False)
+    next_url = url_for('explore', page=laws.next_num) \
+        if laws.has_next else None
+    prev_url = url_for('explore', page=laws.prev_num) \
+        if laws.has_prev else None
+    return render_template('index.html', title='Explore', laws=laws.items,
                            next_url=next_url, prev_url=prev_url)
 @bp.route("/about")
 def about():
@@ -56,13 +59,13 @@ def law_collection():
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
     page = request.args.get('page', 1, type=int)
-    searches = user.searches.order_by(Searches.timestamp.desc()).paginate(
-        page, current_app.config['SEARCHES_PER_PAGE'], False)
-    next_url = url_for('user', username=user.username, page=searches.next_num) \
-        if searches.has_next else None
-    prev_url = url_for('user', username=user.username, page=searches.prev_num) \
-        if searches.has_prev else None
-    return render_template('user.html', user=user, searches=searches.items,
+    laws = user.laws.order_by(Laws.timestamp.desc()).paginate(
+        page, current_app.config['LAWS_PER_PAGE'], False)
+    next_url = url_for('user', username=user.username, page=laws.next_num) \
+        if laws.has_next else None
+    prev_url = url_for('user', username=user.username, page=laws.prev_num) \
+        if laws.has_prev else None
+    return render_template('user.html', user=user, laws=laws.items,
                            next_url=next_url, prev_url=prev_url)
 #Profile Changes
 
@@ -112,3 +115,26 @@ def unfollow(username):
     db.session.commit()
     flash(_('You are not following %(username).', username=username))
     return redirect(url_for('user', username=username))
+
+
+@bp.route('/search')
+@login_required
+def search():
+    if not g.search_form.validate():
+        return redirect(url_for('main.explore'))
+    page = request.args.get('page', 1, type=int)
+    laws, total = Laws.search(g.search_form.q.data, page,
+                              current_app.config['LAWS_PER_PAGE'])
+    next_url = url_for('main.search', q=g.search_form.q.data, page=page + 1) \
+        if total > page * current_app.config['LAWS_PER_PAGE'] else None
+    prev_url = url_for('main.search', q=g.search_form.q.data, page=page - 1) \
+        if page > 1 else None
+    return render_template('search.html', title=_('Search'), laws=laws,
+                           next_url=next_url, prev_url=prev_url)
+
+@bp.route("/dashboard")
+@login_required
+def dashboard():
+    labels = ["January","February","March","April","May","June","July","August"]
+    values = [10,9,8,7,6,4,7,8]
+    return render_template('dashboard.html', values=values, labels=labels)

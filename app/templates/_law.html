@@ -1,0 +1,15 @@
+ <table class="table table-hover">
+        <tr>
+            <td width="200px">
+                <a href="{{ url_for('main.user', username=law.author.username) }}">
+                    <img src="{{ law.author.avatar(70) }}" />
+                </a>
+            </td>
+            <td>
+                <a href="{{ url_for('main.user', username=law.author.username) }}">
+                    {{ law.author.username }}
+                </a>
+            <td>{{_('Title')}}: {{ law.title }} <br>{{_('Published')}}: {{moment(law.timestamp).format('LLL')}}
+            <br>{{_('Age')}}: {{ moment(law.timestamp).fromNow() }}<br>{{_('Language')}}: {{law.language}}<br>{{ _('Summary')}}: {{ law.short_summary }}<br>{{_('Keywords')}}: {{law.keywords}}
+        </tr>
+    </table>

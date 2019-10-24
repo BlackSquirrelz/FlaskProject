@@ -1,22 +1,54 @@
 {% extends 'bootstrap/base.html' %}
-
+{% block head %}
+    {{ super() }}
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+{% endblock %}
 {% if title %}
 {{ title }} - Tax Classifier{% else %}Welcome to Tax Classification
 {% endif %}
-
+<!-- This section handles the navigation bar -->
 {% block navbar %}
-<nav class="navbar navbar-default">
-    <a href="{{ url_for('main.index') }}">{{_('Home')}}</a>
-    <a href="{{ url_for('main.about') }}">{{_('About')}}</a>
-    {% if current_user.is_anonymous %}
-    <a href="{{ url_for('auth.login') }}">{{_('Login')}}</a>
-    <a href="{{ url_for('auth.register') }}">{{_('Register here')}}</a>
-    {% else %}
-    <a href="{{ url_for('main.law_collection') }}">{{_('Collection')}}</a>
-    <a href="{{ url_for('main.user', username=current_user.username) }}">{{_('Profile')}}</a>
-    <a href="{{ url_for('auth.logout') }}">{{_('Logout')}}</a>
-    {% endif %}
-</nav>
+ <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ url_for('main.index') }}">Tax Classifier</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    {% if current_user.is_anonymous %}
+                    <li><a href="{{ url_for('main.about') }}">{{_('About')}}</a></li>
+
+                    {% else %}
+                    <li><a href="{{ url_for('main.explore') }}">{{ _('Explore') }}</a></li>
+                    <li><a href="{{ url_for('main.law_collection') }}">{{_('Collection')}}</a></li>
+                    <li><a href="{{ url_for('main.dashboard') }}">{{_('Dashboard')}}</a></li>
+                    {% endif %}
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    {% if current_user.is_anonymous %}
+                    <li><a href="{{ url_for('auth.login') }}">{{ _('Login') }}</a></li>
+                    <li><a href="{{ url_for('auth.register') }}">{{_('Register here')}}</a></li>
+                    {% else %}
+                        {% if g.search_form %}
+                            <form class="navbar-form navbar-left" method="get" action="{{ url_for('main.search') }}">
+                                <div class="form-group">
+                                    {{ g.search_form.q(size=20, class='form-control', placeholder=g.search_form.q.label.text) }}
+                                </div>
+                            </form>
+                        {% endif %}
+                    <li><a href="{{ url_for('main.user', username=current_user.username) }}">{{ _('Profile') }}</a></li>
+                    <li><a href="{{ url_for('auth.logout') }}">{{ _('Logout') }}</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
 {% endblock %}
 
 {% block content %}

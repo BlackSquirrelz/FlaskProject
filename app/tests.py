@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 import unittest
 from app import app, db
-from app.models import User, Searches
+from app.models import User, Laws
 
 class UserModelCase(unittest.TestCase):
     def setUp(self):
@@ -57,13 +57,13 @@ class UserModelCase(unittest.TestCase):
 
         # create four posts
         now = datetime.utcnow()
-        p1 = Searches(body="post from john", author=u1,
+        p1 = Laws(body="post from john", author=u1,
                   timestamp=now + timedelta(seconds=1))
-        p2 = Searches(body="post from susan", author=u2,
+        p2 = Laws(body="post from susan", author=u2,
                   timestamp=now + timedelta(seconds=4))
-        p3 = Searches(body="post from mary", author=u3,
+        p3 = Laws(body="post from mary", author=u3,
                   timestamp=now + timedelta(seconds=3))
-        p4 = Searches(body="post from david", author=u4,
+        p4 = Laws(body="post from david", author=u4,
                   timestamp=now + timedelta(seconds=2))
         db.session.add_all([p1, p2, p3, p4])
         db.session.commit()
@@ -76,10 +76,10 @@ class UserModelCase(unittest.TestCase):
         db.session.commit()
 
         # check the followed posts of each user
-        f1 = u1.followed_searches().all()
-        f2 = u2.followed_searches().all()
-        f3 = u3.followed_searches().all()
-        f4 = u4.followed_searches().all()
+        f1 = u1.followed_laws().all()
+        f2 = u2.followed_laws().all()
+        f3 = u3.followed_laws().all()
+        f4 = u4.followed_laws().all()
         self.assertEqual(f1, [p2, p4, p1])
         self.assertEqual(f2, [p2, p3])
         self.assertEqual(f3, [p3, p4])
