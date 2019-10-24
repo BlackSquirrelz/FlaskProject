@@ -9,7 +9,7 @@
                 <a href="{{ url_for('user', username=search.author.username) }}">
                     {{ search.author.username }}
                 </a>
-            <td>Title: {{ search.title }} <br>Published on: {{moment(search.timestamp).format('LLL')}}
-            <br>Age: {{ moment(search.timestamp).fromNow() }}<br>Language: {{search.language}}<br>Summary: {{ search.short_summary }}
+            <td>{{_('Title')}}: {{ search.title }} <br>{{_('Published')}}: {{moment(search.timestamp).format('LLL')}}
+            <br>{{_('Age')}}: {{ moment(search.timestamp).fromNow() }}<br>{{_('Language')}}: {{search.language}}<br>{{ _('Summary')}}: {{ search.short_summary }}<br>{{_('Keywords')}}: {{search.keywords}}
         </tr>
     </table>

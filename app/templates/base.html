@@ -6,16 +6,15 @@
 
 {% block navbar %}
 <nav class="navbar navbar-default">
-    <a href="{{ url_for('index') }}">Home</a>
-    <a href="{{ url_for('about') }}">About</a>
+    <a href="{{ url_for('index') }}">{{_('Home')}}</a>
+    <a href="{{ url_for('about') }}">{{_('About')}}</a>
     {% if current_user.is_anonymous %}
-    <a href="{{ url_for('login') }}">Login</a>
-    <a href="{{ url_for('register') }}">Register here</a>
+    <a href="{{ url_for('login') }}">{{_('Login')}}</a>
+    <a href="{{ url_for('register') }}">{{_('Register here')}}</a>
     {% else %}
-    <a href="{{ url_for('law_collection') }}">Collection</a>
-    <a href="{{ url_for('analysis, text_id=1') }}">Analysis</a>
-    <a href="{{ url_for('user', username=current_user.username) }}">Profile</a>
-    <a href="{{ url_for('logout') }}">Logout</a>
+    <a href="{{ url_for('law_collection') }}">{{_('Collection')}}</a>
+    <a href="{{ url_for('user', username=current_user.username) }}">{{_('Profile')}}</a>
+    <a href="{{ url_for('logout') }}">{{_('Logout')}}</a>
     {% endif %}
 </nav>
 {% endblock %}
@@ -37,4 +36,5 @@
 {% block scripts %}
     {{ super() }}
     {{ moment.include_moment() }}
+    {{ moment.lang(g.locale) }}
 {% endblock %}
