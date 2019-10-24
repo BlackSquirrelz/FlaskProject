@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-10-24 11:34-0400\n"
+"POT-Creation-Date: 2019-10-24 12:23-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,167 +19,195 @@ msgstr ""
 
 #: app/__init__.py:21
 msgid "Please log in to access this page"
-msgstr "Bitte melden Sie sich an um diese Seite zu besuchen"
+msgstr ""
 
 #: app/forms.py:10 app/forms.py:16
 msgid "Username"
-msgstr "Benutzername"
+msgstr ""
 
 #: app/forms.py:11
 msgid "Password"
-msgstr "Kennwort"
+msgstr ""
 
 #: app/forms.py:12
 msgid "Remember Me"
-msgstr "Eingeloggt bleiben"
+msgstr ""
 
 #: app/forms.py:13
 msgid "Sign In"
-msgstr "Anmelden"
+msgstr ""
 
 #: app/routes.py:80
 msgid "Invalid username or password"
-msgstr "Benutzername oder Kennwort unbekannt"
+msgstr ""
 
 #: app/routes.py:106
 msgid "Congratulations, you are now a registered user!"
-msgstr "Gratulation, Sie sind jetzt ein registierter Benutzer"
+msgstr ""
 
 #: app/routes.py:120
 msgid "Your changes have been saved."
-msgstr "Gesichert"
+msgstr ""
 
 #: app/routes.py:134 app/routes.py:149
 msgid "User %(username) not found."
-msgstr "Benutzername nicht gefunden"
+msgstr ""
 
 #: app/routes.py:137
 msgid "You cannot follow yourself!"
-msgstr "Sie koennen sich nicht selbst folgen"
+msgstr ""
 
 #: app/routes.py:141
 msgid "You are following %(username)!"
-msgstr "Sie folgen jetzt %(username)!"
+msgstr ""
 
 #: app/routes.py:152
 msgid "You cannot unfollow yourself!"
-msgstr "Das kann ich leider nicht machen"
+msgstr ""
 
 #: app/routes.py:156
 msgid "You are not following %(username)."
-msgstr "Sie folgen %(username) nicht"
+msgstr ""
 
 #: app/routes.py:168
 msgid "Check your email for the instructions to reset your password"
-msgstr "In Ihrer E-Mail finden Sie Anweisungen zum Zurücksetzen Ihres Kennworts"
+msgstr ""
 
 #: app/routes.py:186
 msgid "Your password has been reset."
-msgstr "Ihr Kennwort wurde wiederhergestellt"
+msgstr ""
 
 #: app/templates/404.html:4
 msgid "File Not Found"
-msgstr "Dokument nicht gefunden"
+msgstr ""
 
 #: app/templates/404.html:5
 msgid "Back"
-msgstr "Zurück"
+msgstr ""
 
 #: app/templates/500.html:4
 msgid "An unexpected error has occurred"
-msgstr "Ein unerwarteter Fehler ist aufgetreten"
+msgstr ""
 
 #: app/templates/500.html:5
 msgid "The administrator has been notified. Sorry for the inconvenience!"
-msgstr "Der Administrator wurde benachrichtigt."
+msgstr ""
 
 #: app/templates/_search.html:12
 msgid "Title"
-msgstr "Titel"
+msgstr ""
 
 #: app/templates/_search.html:12
 msgid "Published"
-msgstr "In Kraft getretten"
+msgstr ""
 
 #: app/templates/_search.html:13
 msgid "Age"
-msgstr "Alter"
+msgstr ""
 
 #: app/templates/_search.html:13
 msgid "Language"
-msgstr "Sprache"
+msgstr ""
 
 #: app/templates/_search.html:13
 msgid "Summary"
-msgstr "Zusammenfassung"
+msgstr ""
 
 #: app/templates/_search.html:13
 msgid "Keywords"
-msgstr "Stichworte"
+msgstr ""
 
 #: app/templates/about.html:3
 msgid "This is the about section"
-msgstr "Dies ist die Über Sektion "
+msgstr ""
+
+#: app/templates/base.html:9
+msgid "Home"
+msgstr ""
+
+#: app/templates/base.html:10
+msgid "About"
+msgstr ""
+
+#: app/templates/base.html:12
+msgid "Login"
+msgstr ""
+
+#: app/templates/base.html:13
+msgid "Register here"
+msgstr ""
+
+#: app/templates/base.html:15
+msgid "Collection"
+msgstr ""
+
+#: app/templates/base.html:16
+msgid "Profile"
+msgstr ""
+
+#: app/templates/base.html:17
+msgid "Logout"
+msgstr ""
 
 #: app/templates/edit_profile.html:4
 msgid "Edit Profile"
-msgstr "Profil bearbeiten"
+msgstr ""
 
 #: app/templates/index.html:17
 msgid "Newer searches"
-msgstr "neuere"
+msgstr ""
 
 #: app/templates/index.html:22
 msgid "Older searches"
-msgstr "ältere"
+msgstr ""
 
 #: app/templates/law_collection.html:3
 msgid "This is your collection of laws"
-msgstr "Dies ist Ihre Sammlung von Gesetzen"
+msgstr ""
 
 #: app/templates/login.html:12
 msgid "New User"
-msgstr "Neuer Benutzer"
+msgstr ""
 
 #: app/templates/login.html:12
 msgid "Click to Register"
-msgstr "Klicken um zu Registrieren"
+msgstr ""
 
 #: app/templates/login.html:14
 msgid "Forgot Your Password"
-msgstr "Kennwort vergessen"
+msgstr ""
 
 #: app/templates/login.html:15
 msgid "Click to Reset It"
-msgstr "Klicken Sie, um es zurückzusetzen "
+msgstr ""
 
 #: app/templates/registration.html:5
 msgid "Register"
-msgstr "Registrieren"
+msgstr ""
 
 #: app/templates/reset_password.html:4
 msgid "Reset Your Password"
-msgstr "Ihr Kennwort zurücksetzen"
+msgstr ""
 
 #: app/templates/reset_password_request.html:4
 msgid "Reset Password"
-msgstr "Kennwort zurücksetzen"
+msgstr ""
 
 #: app/templates/user.html:8
 msgid "User"
-msgstr "Benutzer"
+msgstr ""
 
 #: app/templates/user.html:10
 msgid "Last seen on"
-msgstr "Zuletzt Online"
+msgstr ""
 
 #: app/templates/user.html:11
 msgid "followers"
-msgstr "Folgen"
+msgstr ""
 
 #: app/templates/user.html:11
 msgid "following"
-msgstr "Folgt"
+msgstr ""
 
 #: app/templates/user.html:13
 msgid "Edit your profile"
@@ -187,9 +215,9 @@ msgstr ""
 
 #: app/templates/user.html:15
 msgid "Follow"
-msgstr "folgen"
+msgstr ""
 
 #: app/templates/user.html:17
 msgid "Unfollow"
-msgstr "nicht-folgen"
+msgstr ""
 

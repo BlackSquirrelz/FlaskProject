@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-10-24 11:34-0400\n"
+"POT-Creation-Date: 2019-10-24 12:23-0400\n"
 "PO-Revision-Date: 2019-10-24 11:58-0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: it\n"
@@ -121,6 +121,34 @@ msgstr "Stichworte"
 #: app/templates/about.html:3
 msgid "This is the about section"
 msgstr "Dies ist die Über Sektion "
+
+#: app/templates/base.html:9
+msgid "Home"
+msgstr ""
+
+#: app/templates/base.html:10
+msgid "About"
+msgstr ""
+
+#: app/templates/base.html:12
+msgid "Login"
+msgstr ""
+
+#: app/templates/base.html:13
+msgid "Register here"
+msgstr ""
+
+#: app/templates/base.html:15
+msgid "Collection"
+msgstr ""
+
+#: app/templates/base.html:16
+msgid "Profile"
+msgstr ""
+
+#: app/templates/base.html:17
+msgid "Logout"
+msgstr ""
 
 #: app/templates/edit_profile.html:4
 msgid "Edit Profile"

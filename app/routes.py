@@ -6,9 +6,7 @@ from werkzeug.urls import url_parse
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, EditProfileForm, ResetPasswordRequestForm
 from app.models import User, Searches
-from app.email import send_password_reset_email
-import nltk
-
+from app.auth.email import send_password_reset_email
 
 
 @app.before_request

@@ -6,15 +6,15 @@
 
 {% block navbar %}
 <nav class="navbar navbar-default">
-    <a href="{{ url_for('index') }}">{{_('Home')}}</a>
-    <a href="{{ url_for('about') }}">{{_('About')}}</a>
+    <a href="{{ url_for('main.index') }}">{{_('Home')}}</a>
+    <a href="{{ url_for('main.about') }}">{{_('About')}}</a>
     {% if current_user.is_anonymous %}
-    <a href="{{ url_for('login') }}">{{_('Login')}}</a>
-    <a href="{{ url_for('register') }}">{{_('Register here')}}</a>
+    <a href="{{ url_for('auth.login') }}">{{_('Login')}}</a>
+    <a href="{{ url_for('auth.register') }}">{{_('Register here')}}</a>
     {% else %}
-    <a href="{{ url_for('law_collection') }}">{{_('Collection')}}</a>
-    <a href="{{ url_for('user', username=current_user.username) }}">{{_('Profile')}}</a>
-    <a href="{{ url_for('logout') }}">{{_('Logout')}}</a>
+    <a href="{{ url_for('main.law_collection') }}">{{_('Collection')}}</a>
+    <a href="{{ url_for('main.user', username=current_user.username) }}">{{_('Profile')}}</a>
+    <a href="{{ url_for('auth.logout') }}">{{_('Logout')}}</a>
     {% endif %}
 </nav>
 {% endblock %}

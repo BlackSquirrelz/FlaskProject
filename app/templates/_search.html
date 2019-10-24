@@ -1,12 +1,12 @@
  <table class="table table-hover">
         <tr>
             <td width="200px">
-                <a href="{{ url_for('user', username=search.author.username) }}">
+                <a href="{{ url_for('main.user', username=search.author.username) }}">
                     <img src="{{ search.author.avatar(70) }}" />
                 </a>
             </td>
             <td>
-                <a href="{{ url_for('user', username=search.author.username) }}">
+                <a href="{{ url_for('main.user', username=search.author.username) }}">
                     {{ search.author.username }}
                 </a>
             <td>{{_('Title')}}: {{ search.title }} <br>{{_('Published')}}: {{moment(search.timestamp).format('LLL')}}

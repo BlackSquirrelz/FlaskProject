@@ -11,3 +11,4 @@ app.db
 logs/microblog.log
 logs/taxclassifier.log
 laws/__pycache__/items.cpython-37.pyc
+config.env

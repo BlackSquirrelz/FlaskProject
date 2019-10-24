@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-10-24 11:34-0400\n"
+"POT-Creation-Date: 2019-10-24 12:23-0400\n"
 "PO-Revision-Date: 2019-10-24 11:58-0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: de\n"
@@ -122,6 +122,34 @@ msgstr "Stichworte"
 msgid "This is the about section"
 msgstr "Dies ist die Über Sektion "
 
+#: app/templates/base.html:9
+msgid "Home"
+msgstr "Home"
+
+#: app/templates/base.html:10
+msgid "About"
+msgstr "Uber"
+
+#: app/templates/base.html:12
+msgid "Login"
+msgstr "Anmelden"
+
+#: app/templates/base.html:13
+msgid "Register here"
+msgstr "Hier registrieren"
+
+#: app/templates/base.html:15
+msgid "Collection"
+msgstr "Sammlung"
+
+#: app/templates/base.html:16
+msgid "Profile"
+msgstr "Profil"
+
+#: app/templates/base.html:17
+msgid "Logout"
+msgstr "Abmelden"
+
 #: app/templates/edit_profile.html:4
 msgid "Edit Profile"
 msgstr "Profil bearbeiten"
@@ -184,7 +212,7 @@ msgstr "Folgt"
 
 #: app/templates/user.html:13
 msgid "Edit your profile"
-msgstr ""
+msgstr "Profil Bearbeiten"
 
 #: app/templates/user.html:15
 msgid "Follow"
