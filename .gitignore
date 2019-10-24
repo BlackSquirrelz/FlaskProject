@@ -1,0 +1,13 @@
+
+.DS_Store
+*.xml
+.idea/*
+__pychache__/*
+migrations/*
+config.py
+__pycache__/config.cpython-37.pyc
+app.db.sqbpro
+app.db
+logs/microblog.log
+logs/taxclassifier.log
+laws/__pycache__/items.cpython-37.pyc

@@ -1,0 +1,15 @@
+ <table class="table table-hover">
+        <tr>
+            <td width="200px">
+                <a href="{{ url_for('user', username=search.author.username) }}">
+                    <img src="{{ search.author.avatar(70) }}" />
+                </a>
+            </td>
+            <td>
+                <a href="{{ url_for('user', username=search.author.username) }}">
+                    {{ search.author.username }}
+                </a>
+            <td>Title: {{ search.title }} <br>Published on: {{moment(search.timestamp).format('LLL')}}
+            <br>Age: {{ moment(search.timestamp).fromNow() }}<br>Language: {{search.language}}<br>Summary: {{ search.short_summary }}
+        </tr>
+    </table>
