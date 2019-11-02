@@ -3,11 +3,11 @@ from flask import render_template, flash, redirect, url_for, request, g, current
 from flask_login import current_user, login_required
 from flask_babel import _, get_locale
 from app import db
-from app.main.forms import EditProfileForm, Law_Form
+from app.main.forms import EditProfileForm
 from app.models import User, Laws
 from app.main import bp
 from app.main.forms import SearchForm
-from flask_table import Table, Col, LinkCol
+import nltk
 
 @bp.before_request
 def before_request():
@@ -135,6 +135,6 @@ def search():
 @bp.route("/dashboard")
 @login_required
 def dashboard():
-    labels = ["January","February","March","April","May","June","July","August"]
-    values = [10,9,8,7,6,4,7,8]
-    return render_template('dashboard.html', values=values, labels=labels)
+    no_laws = Laws.query.order_by(Laws.timestamp.desc()).count
+    return render_template('dashboard.html', no_laws=no_laws)
+
